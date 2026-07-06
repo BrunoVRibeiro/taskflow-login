@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Área Interna</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <!-- Caminho em minúsculas: compatível com servidores case-sensitive (GitHub Pages) -->
+            <img src="../login/logo.png" alt="Logo TaskFlow" class="logo">
+            <h1>Bem-vindo ao TaskFlow</h1>
+        </header>
+
+        <main>
+            <p>Usuário logado: <span id="userName"></span></p>
+
+            <div class="actions">
+                <a href="#" class="button" title="Funcionalidade prevista para versão futura">Minhas Tarefas</a>
+                <a href="#" class="button" title="Funcionalidade prevista para versão futura">Configurações</a>
+                <a href="#" class="button logout" id="logoutBtn">Sair</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Proteção da área interna (RF04 / CT05):
+        // sem sessão ativa, o usuário volta para a tela de login.
+        const usuario = sessionStorage.getItem("usuarioLogado");
+
+        if (usuario) {
+            document.getElementById("userName").innerText = usuario;
+        } else {
+            window.location.href = "../login/login.html";
+        }
+
+        // Logout seguro (RF05 / CT04):
+        // encerra a sessão e retorna à tela de login.
+        function logout() {
+            sessionStorage.removeItem("usuarioLogado");
+            window.location.href = "../login/login.html";
+        }
+
+        document.getElementById("logoutBtn").addEventListener("click", (e) => {
+            e.preventDefault();
+            logout();
+        });
+    </script>
+</body>
+</html>

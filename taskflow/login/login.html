@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- O uso de <form> garante a validacao nativa dos campos
+             obrigatorios (CT03) e o envio com a tecla Enter -->
+        <form class="login_box" id="loginForm">
+
+            <!-- Logo -->
+            <div class="login-logo">
+                <img src="logo.png" alt="Logo TaskFlow">
+                <h1>TaskFlow</h1>
+            </div>
+
+            <!-- Campo Usuario -->
+            <div class="input_box">
+                <input type="text" id="user" class="input-field" autocomplete="username" required>
+                <label for="user" class="label">Usuário</label>
+                <i class="bx bx-user icon"></i>
+            </div>
+
+            <!-- Campo Senha -->
+            <div class="input_box">
+                <input type="password" id="pass" class="input-field" autocomplete="current-password" required>
+                <label for="pass" class="label">Senha</label>
+                <i class="bx bx-lock-alt icon"></i>
+            </div>
+
+            <!-- Lembrar senha + Esqueci minha senha (ilustrativos nesta versao - RF07) -->
+            <div class="remember-forgot">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Lembrar senha</label>
+                </div>
+                <div class="forgot">
+                    <a href="#" title="Funcionalidade prevista para versão futura">Esqueci minha senha</a>
+                </div>
+            </div>
+
+            <!-- Botao Login -->
+            <div class="input_box">
+                <button type="submit" class="input-submit">Entrar</button>
+            </div>
+
+            <!-- Registrar (ilustrativo nesta versao - RF06) -->
+            <div class="register">
+                <span>Não tem uma conta?
+                    <a href="#" title="Funcionalidade prevista para versão futura">Registrar-se</a>
+                </span>
+            </div>
+        </form>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

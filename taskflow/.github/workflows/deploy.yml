@@ -1,0 +1,36 @@
+# Este arquivo deve ficar na RAIZ do repositório, em .github/workflows/,
+# para que o GitHub Actions o reconheça.
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - master   # cobre o caso do repositório usar "master" como branch padrão
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar o GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Enviar os arquivos do site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Publicar no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

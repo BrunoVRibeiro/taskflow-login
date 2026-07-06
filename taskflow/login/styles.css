@@ -1,0 +1,190 @@
+/* TaskFlow - Projeto Integrador V-B
+   Estilos da tela de login */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", "Poppins", sans-serif;
+}
+
+:root {
+    --background-color: #1e1e1e;
+    --card-color: #2c2c2c;
+    --text-color: #f0f0f0;
+    --accent-color: #2b6e8d;   /* azul principal */
+    --accent-light: #66abc9;   /* azul claro */
+    --border-color: #444;
+    --label-color: #aaa;
+    --input-bg: #333;
+}
+
+body {
+    background: linear-gradient(145deg, var(--background-color), var(--card-color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-color);
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+}
+
+.login_box {
+    width: 100%;
+    max-width: 380px;
+    background-color: var(--card-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 15px;
+    padding: 32px 28px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.login-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-logo img {
+    height: 40px;     
+    width: auto;       
+    object-fit: contain;
+}
+
+.login-logo h1 {
+    display: none;  
+}
+
+.input_box {
+    position: relative;
+    margin-bottom: 22px;
+}
+
+.input-field {
+    width: 100%;
+    height: 48px;
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    color: var(--text-color);
+    padding: 0 44px 0 18px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-field:focus {
+    border-color: var(--accent-light);
+}
+
+.label {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    color: var(--label-color);
+    transition: 0.3s;
+    pointer-events: none;
+    /* [MARCAÇÃO 1 - REMOVENDO FUNDO CINZA DAS DESCRIÇÕES]
+       Removido 'background: var(--card-color);' para tirar a sobreposição de cor.
+       Removido 'padding: 0 8px;' para alinhar perfeitamente sem a "caixa". */
+}
+
+/* Mantendo a animação do label flutuante, mas sem o fundo.
+   Apenas mudamos a cor quando focado/válido. */
+.input-field:focus ~ .label,
+.input-field:valid ~ .label {
+    top: -10px;
+    left: 15px;
+    font-size: 12px;
+    color: var(--accent-light);
+    /* Mantendo 'padding: 0 8px;' aqui no estado flutuante para afastar as letras da borda. */
+    background: var(--card-color);
+    padding: 0 8px;
+}
+
+.icon {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    color: var(--accent-color);
+    font-size: 20px;
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centralizando verticalmente */
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: var(--label-color);
+}
+
+/* [MARCAÇÃO 2 - MUDANDO A COR PARA ALGO QUE SE ENCAIXE MELHOR]
+   Substituindo o link azul genérico por var(--accent-light) para harmonia. */
+.forgot a {
+    color: var(--accent-light);
+    text-decoration: none; /* Removendo o sublinhado para mais elegância */
+}
+
+.forgot a:hover {
+    color: var(--hover-color);
+    text-decoration: underline; /* Sublinhado no hover */
+}
+
+.input-submit {
+    width: 100%;
+    height: 45px;
+    background: var(--accent-color);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.input-submit:hover {
+    background: var(--hover-color);
+}
+
+.register {
+    text-align: center;
+    margin-top: 15px;
+    color: var(--label-color);
+}
+
+.register a {
+    font-weight: 500;
+    color: var(--accent-light);
+}
+
+.register a:hover {
+    color: var(--hover-color);
+}
+
+/* [MARCAÇÃO 3 - PADRONIZANDO O TAMANHO DOS LINKS]
+   Definindo um tamanho de fonte consistente para os links do rodapé. */
+.remember-forgot a,
+.register a {
+    font-size: 0.9rem; /* Exemplo de tamanho consistente */
+}
+
+/* Responsividade*/
+@media only screen and (max-width: 500px) {
+    .login_box {
+        padding: 2em 1em 2em 1em;
+    }
+}
+
+@media (min-width: 800px) {
+    .login_box {
+        padding: 3em 3em 2em 3em;
+        border: 1px solid var(--accent-color);
+    }
+}
